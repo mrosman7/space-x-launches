@@ -28,10 +28,10 @@ export class LaunchesGridComponent {
 
     // Column Definitions: Defines the columns to be displayed.
     colDefs: ColDef[] = [
-        { field: "flightNumber" },
-        { field: "launchYear" },
-        { field: "rocketName" },
-        { field: "details" }
+        { field: "flightNumber", filter: true, floatingFilter: true},
+        { field: "launchYear", filter: true, floatingFilter: true},
+        { field: "rocketName", filter: true, floatingFilter: true},
+        { field: "details", filter: true, floatingFilter: true}
     ];
 
 }
