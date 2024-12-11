@@ -14,6 +14,11 @@ import { HomeComponent } from './home/home.component';
     <section>
         <app-home></app-home>
     </section>
+    <footer>
+      <p>created by Mariah Rosman</p>
+      <p>LinkedIn: https://www.linkedin.com/in/mariahrosman/</p>
+      <p>BlueSky: https://bsky.app/profile/mariahsdevdiary.bsky.social</p>
+    </footer>
 </main>
 `
 })
