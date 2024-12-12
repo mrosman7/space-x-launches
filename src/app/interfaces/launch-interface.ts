@@ -1,5 +1,5 @@
-export interface LaunchInfo {
-    flightNumber: number, 
+export interface Launches {
+    flight_number: number, 
     launchYear: number,
     rocketName: string,
     details: string
