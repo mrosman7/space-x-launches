@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import type { ColDef } from 'ag-grid-community';
+import type { ColDef, GridReadyEvent } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { ApiService } from '../api/api.service';
@@ -19,13 +19,25 @@ ModuleRegistry.registerModules([AllCommunityModule]);
         [columnDefs]="colDefs"
         [pagination]="pagination"
         [paginationPageSize]="paginationPageSize"
-        [paginationPageSizeSelector]="paginationPageSizeSelector"/>
+        [paginationPageSizeSelector]="paginationPageSizeSelector"
+        (gridReady)="onGridReady($event)"
+        />
   `,
   styleUrl: './launches-grid.component.css'
 })
 export class LaunchesGridComponent {
 
   launches: Object[] = [];
+  rowData: any = []
+
+  // Column Definitions: Defines the columns to be displayed.
+  colDefs: ColDef[] = [
+    { field: "name", filter: true, floatingFilter: true},
+    { field: "flight_number", filter: true, floatingFilter: true},
+    { field: "date_utc", filter: true, floatingFilter: true},
+    { field: "rocket", filter: true, floatingFilter: true},
+    { field: "details", filter: true, floatingFilter: true}
+  ];
 
   private apiService = inject(ApiService);
   pagination = true;
@@ -33,27 +45,10 @@ export class LaunchesGridComponent {
   paginationPageSizeSelector = [25, 50, 75, 100];
 
   ngOnInit(): void {
-    this.getLaunchesData();
+    this.onGridReady();
   }
 
-  getLaunchesData() {
-    this.apiService.getLaunchesInfo().subscribe((res: any) => {
-      console.log(res);
-    })
+  onGridReady() {
+    this.apiService.getLaunchesInfo().subscribe(data => this.rowData = data)
   }
-
-  // Placeholder Row Data: The data to be displayed.
-  rowData = [
-    { flightNumber: sampleData[0]["flight_number"], launchYear: sampleData[0]["date_utc"], rocketName: sampleData[0]["rocket"], details: sampleData[0]["details"]},
-    { flightNumber: sampleData[0]["rocket"], launchYear: sampleData[0]["date_utc"], rocketName: sampleData[0]["rocket"], details: sampleData[0]["details"]},
-  ];
-
-  // Column Definitions: Defines the columns to be displayed.
-  colDefs: ColDef[] = [
-    { field: "flightNumber", filter: true, floatingFilter: true},
-    { field: "launchYear", filter: true, floatingFilter: true},
-    { field: "rocketName", filter: true, floatingFilter: true},
-    { field: "details", filter: true, floatingFilter: true}
-  ];
-
 }
