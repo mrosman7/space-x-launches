@@ -20,7 +20,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
         [pagination]="pagination"
         [paginationPageSize]="paginationPageSize"
         [paginationPageSizeSelector]="paginationPageSizeSelector"
-        (gridReady)="onGridReady($event)"
+        (gridReady)="onGridReady()"
         />
   `,
   styleUrl: './launches-grid.component.css'
@@ -29,20 +29,18 @@ export class LaunchesGridComponent {
 
   launches: Object[] = [];
   rowData: any = []
-
-  // Column Definitions: Defines the columns to be displayed.
-  colDefs: ColDef[] = [
-    { field: "name", filter: true, floatingFilter: true},
-    { field: "flight_number", filter: true, floatingFilter: true},
-    { field: "date_utc", filter: true, floatingFilter: true},
-    { field: "rocket", filter: true, floatingFilter: true},
-    { field: "details", filter: true, floatingFilter: true}
-  ];
-
   private apiService = inject(ApiService);
   pagination = true;
   paginationPageSize = 25;
   paginationPageSizeSelector = [25, 50, 75, 100];
+
+  // Column Definitions: Defines the columns to be displayed.
+  colDefs: ColDef[] = [
+    { headerName: "Flight Number", field: "flight_number", filter: true},
+    { headerName: "Launch Year", field: "date_utc", filter: true, valueFormatter: params => { return params.value.slice(0,4); }},
+    { headerName: "Rocket Name", field: "name", filter: true},
+    { field: "details", filter: true}
+  ];
 
   ngOnInit(): void {
     this.onGridReady();
