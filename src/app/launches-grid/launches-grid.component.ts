@@ -1,18 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import type { ColDef, GridReadyEvent } from 'ag-grid-community';
+import type { ColDef } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { ApiService } from '../api/api.service';
-import { sampleData } from '../constants/sampleData';
-import { Launches } from '../interfaces/launch-interface';
+import { MediaPopupComponent } from '../media-popup/media-popup.component';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-launches-grid',
-  imports: [AgGridAngular],
-  template: `
+  imports: [AgGridAngular, MediaPopupComponent],
+  template: ` 
     <ag-grid-angular
     class="ag-theme-quartz" style="height: 500px;"
         [rowData]="rowData"
@@ -21,7 +20,11 @@ ModuleRegistry.registerModules([AllCommunityModule]);
         [paginationPageSize]="paginationPageSize"
         [paginationPageSizeSelector]="paginationPageSizeSelector"
         (gridReady)="onGridReady()"
+        (cellClicked)="onCellClicked($event)"
         />
+        <app-media-popup 
+        [showPopup] = "showPopup"
+        ></app-media-popup>
   `,
   styleUrl: './launches-grid.component.css'
 })
@@ -33,6 +36,10 @@ export class LaunchesGridComponent {
   pagination = true;
   paginationPageSize = 25;
   paginationPageSizeSelector = [25, 50, 75, 100];
+  public groupDefaultExpanded = 1;
+  testing = "Hello World"
+  showPopup: boolean = false;
+
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
@@ -49,4 +56,18 @@ export class LaunchesGridComponent {
   onGridReady() {
     this.apiService.getLaunchesInfo().subscribe(data => this.rowData = data)
   }
+
+  toggleShowPopup() {
+    this.showPopup = !this.showPopup;
+  }
+
+  onCellClicked(event: any) {
+    this.toggleShowPopup()
+    const popup = document.createElement('div');
+    popup.innerHTML = `<app-cell-popup [data]="data"></app-cell-popup>`;
+    const popupComponent = new MediaPopupComponent();
+
+    document.body.appendChild(popup);
+  }
+
 }
