@@ -5,7 +5,10 @@ export interface Launch {
     details: string | null,
     presskit: string | null,
     webcast: string | null,
-    youtube_id: string | null,
-    article: string | null,
-    wikipedia: string | null
+    wikipedia: string | null,
+    redditCampaign: string | null,
+    redditLaunch: string | null,
+    redditMedia: string | null,
+    redditRecovery: string | null,
+    missionImage: string | null
 }

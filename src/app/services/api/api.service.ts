@@ -19,7 +19,6 @@ export class ApiService {
   getLaunchesInfo() {
     // Update state to isLoading while result is fetched
     this.stateService.updateState({isLoading: true});
-    console.log('state is updating to ', this.stateService);
 
     const launchesURL: string = 'https://api.spacexdata.com/v5/launches'
     this.http.get<ApiResponse[]>(launchesURL).subscribe(
@@ -29,20 +28,25 @@ export class ApiService {
           launchYear: Number(item.date_utc.slice(0,4)),
           rocketName: item.name,
           details: item.details,
-          presskit: item.presskit,
-          webcast: item.webcast,
-          youtube_id: item.youtube_id,
-          article: item.article,
-          wikipedia: item.wikipedia
+          presskit: item.links.presskit,
+          webcast: item.links.webcast,
+          wikipedia: item.links.wikipedia,
+          redditCampaign: item.links.reddit.campaign,
+          redditLaunch: item.links.reddit.launch,
+          redditMedia: item.links.reddit.media,
+          redditRecovery: item.links.reddit.recovery,
+          missionImage: item.links.patch.small
+
         }));
 
         // update state post API call
         this.stateService.updateState({ data: launches, isLoading: false });
     },
-    (error) => {
-      console.log('Error fetching launches: ', error);
-      this.stateService.updateState({isLoading: false});
-    }
+    // TO DO: fix error logging
+    // (error) => {
+    //   console.log('Error fetching launches: ', error);
+    //   this.stateService.updateState({isLoading: false});
+    // }
   );
 }
 }

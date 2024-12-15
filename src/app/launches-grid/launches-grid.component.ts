@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import type { ColDef } from 'ag-grid-community';
+import type { ColDef, RowSpanParams } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { Observable } from 'rxjs';
@@ -28,6 +28,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
         />
         <app-media-popup 
         [showPopup] = "showPopup"
+        [eventData] = "eventData"
         ></app-media-popup>
   `,
   styleUrl: './launches-grid.component.css'
@@ -39,8 +40,8 @@ export class LaunchesGridComponent {
   pagination = true;
   paginationPageSize = 25;
   paginationPageSizeSelector = [25, 50, 75, 100];
-  public groupDefaultExpanded = 1;
   showPopup: boolean = false;
+  eventData!: Launch | void;
 
   constructor(
     private stateService: StateService,
@@ -61,10 +62,10 @@ export class LaunchesGridComponent {
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
+    { headerName: "Rocket Name", field: "rocketName", filter: true},
     { headerName: "Flight Number", field: "flight_number", filter: true},
     { headerName: "Launch Year", field: "launchYear", filter: true},
-    { headerName: "Rocket Name", field: "name", filter: true},
-    { field: "details", filter: true}
+    { field: "details", filter: true, autoHeight: true, wrapText: true, width: 750}
   ];
 
   toggleShowPopup() {
@@ -73,6 +74,7 @@ export class LaunchesGridComponent {
 
   onCellClicked(event: any) {
     this.toggleShowPopup()
+    this.eventData = this.stateService.getLaunch(event.data.flight_number);
     const popup = document.createElement('div');
     popup.innerHTML = `<app-cell-popup [data]="data"></app-cell-popup>`;
     const popupComponent = new MediaPopupComponent();

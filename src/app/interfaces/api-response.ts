@@ -3,9 +3,18 @@ export interface ApiResponse {
     date_utc: string;
     name: string;
     details: string;
-    presskit: string;
-    webcast: string;
-    youtube_id: string;
-    article: string;
-    wikipedia: string;
+    links: {
+        presskit: string;
+        webcast: string;
+        wikipedia: string,
+        reddit: {
+            campaign: string,
+            launch: string,
+            media: string,
+            recovery: string
+        },
+        patch: {
+            small: string
+        }
+    }
 }

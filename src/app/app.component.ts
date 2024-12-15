@@ -16,8 +16,8 @@ import { HomeComponent } from './home/home.component';
     </section>
     <footer>
       <p>created by Mariah Rosman</p>
-      <p>LinkedIn: https://www.linkedin.com/in/mariahrosman/</p>
-      <p>BlueSky: https://bsky.app/profile/mariahsdevdiary.bsky.social</p>
+      <a href="https://www.linkedin.com/in/mariahrosman/">LinkedIn | </a>
+      <a href="https://bsky.app/profile/mariahsdevdiary.bsky.social"> BlueSky</a>
     </footer>
 </main>
 `

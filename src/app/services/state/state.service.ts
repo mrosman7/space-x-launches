@@ -9,7 +9,7 @@ import { Launch } from '../../interfaces/launch-interface';
 export class StateService {
 
   private initialState: AppState = {
-    data: null as Launch[] | null,
+    data: [],
     isLoading: false
   };
 
@@ -22,10 +22,16 @@ export class StateService {
   // require passing the entire state Object every time we update
   updateState(newState: Partial<typeof this.initialState>) {
     const currentState = this.stateSubject.value;
-    // spread operator to combine currentState and newState
-    this.stateSubject.next({ ...currentState, ...newState });
+    this.stateSubject.next({ ...currentState, ...newState });  // spread operator to combine currentState and newState
   }
 
-  
-
+  // method to search for a specific flight launch in Launches[] for popup component 
+  getLaunch(flight: number) {
+    const launchesList = this.stateSubject.value.data;
+    if (launchesList !== null ) {
+      return launchesList.find((dict) => dict.flight_number === flight);
+    } else {
+      return console.log('Launches list is empty')
+    }
+  }
 }
