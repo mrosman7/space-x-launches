@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
-import type { ColDef, RowSpanParams } from 'ag-grid-community';
+import type { ColDef } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { Observable } from 'rxjs';

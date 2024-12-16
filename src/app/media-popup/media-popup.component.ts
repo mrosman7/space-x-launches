@@ -1,11 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Launch } from '../interfaces/launch-interface';
-import { StateService } from '../services/state/state.service';
-import { ImagePageComponent } from "../image-page/image-page.component";
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -23,6 +18,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <p></p>
       <a href="{{eventData.wikipedia}}" *ngIf="eventData.wikipedia">Wikipedia Article</a>
       <p></p>
+      <div>
+        <a routerLink="image-page"> Images </a>
+      </div>
       <button (click)="closePopup()">Close</button>
       </div>
   `,
