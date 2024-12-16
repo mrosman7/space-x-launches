@@ -4,16 +4,16 @@ import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HomeComponent],
+  imports: [RouterOutlet],
   styleUrl: './app.component.css',
   template: `
   <main>
     <header>
         <p>Nav bar placeholder</p>
     </header>
-    <section>
-        <app-home></app-home>
-    </section>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
     <footer>
       <p>created by Mariah Rosman</p>
       <a href="https://www.linkedin.com/in/mariahrosman/">LinkedIn | </a>
