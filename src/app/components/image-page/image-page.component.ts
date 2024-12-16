@@ -1,7 +1,7 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StateService } from '../services/state/state.service';
+import { StateService } from '../../services/state/state.service';
 
 // TODO: when image page is refreshed we see a blank page. This is something we would need to update before going to prod
 

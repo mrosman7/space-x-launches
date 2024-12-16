@@ -1,9 +1,6 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ImagePageComponent } from "../image-page/image-page.component";
-
-
 
 @Component({
   selector: 'app-media-popup',

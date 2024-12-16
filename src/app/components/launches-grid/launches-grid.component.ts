@@ -6,10 +6,10 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Launch } from '../interfaces/launch-interface';
+import { Launch } from '../../interfaces/launch-interface';
+import { ApiService } from '../../services/api/api.service';
+import { StateService } from '../../services/state/state.service';
 import { MediaPopupComponent } from '../media-popup/media-popup.component';
-import { ApiService } from '../services/api/api.service';
-import { StateService } from '../services/state/state.service';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
