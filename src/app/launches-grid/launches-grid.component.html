@@ -1,0 +1,15 @@
+<div>
+    <ag-grid-angular class="ag-theme-quartz" style="height: 500px;"
+    [rowData]="launches$ | async"
+    [columnDefs]="colDefs"
+    [pagination]="pagination"
+    [paginationPageSize]="paginationPageSize"
+    [paginationPageSizeSelector]="paginationPageSizeSelector"
+    (cellClicked)="onCellClicked($event)"
+    />
+    <app-media-popup 
+    [showPopup] = "showPopup"
+    [eventData] = "eventData"
+    [imagesAvailable] = "imagesAvailable"
+    />
+</div>

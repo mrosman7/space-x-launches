@@ -1,20 +1,14 @@
-import { Component, Input } from '@angular/core';
-import { StateService } from '../services/state/state.service';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { map, Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { StateService } from '../services/state/state.service';
 
 // TODO: when image page is refreshed we see a blank page. This is something we would need to update before going to prod
 
 @Component({
   selector: 'app-image-page',
   imports: [NgFor, NgIf, CommonModule],
-  template: `
-  <div *ngIf="images$ | async as images">
-    <div *ngFor="let image of objectValues(images)">
-      <img [src]="image" />
-    </div>
-  </div>
-  `,
+  templateUrl: './image-page.component.html',
   styleUrl: './image-page.component.css'
 })
 export class ImagePageComponent {

@@ -1,0 +1,5 @@
+<div *ngIf="images$ | async as images">
+    <div *ngFor="let image of objectValues(images)">
+      <img [src]="image" />
+    </div>
+</div>

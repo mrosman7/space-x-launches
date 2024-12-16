@@ -10,29 +10,13 @@ import { Launch } from '../interfaces/launch-interface';
 import { MediaPopupComponent } from '../media-popup/media-popup.component';
 import { ApiService } from '../services/api/api.service';
 import { StateService } from '../services/state/state.service';
-import { ImagePageComponent } from "../image-page/image-page.component";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-launches-grid',
   imports: [AgGridAngular, MediaPopupComponent, CommonModule],
-  template: ` 
-    <ag-grid-angular
-    class="ag-theme-quartz" style="height: 500px;"
-        [rowData]="launches$ | async"
-        [columnDefs]="colDefs"
-        [pagination]="pagination"
-        [paginationPageSize]="paginationPageSize"
-        [paginationPageSizeSelector]="paginationPageSizeSelector"
-        (cellClicked)="onCellClicked($event)"
-        />
-        <app-media-popup 
-        [showPopup] = "showPopup"
-        [eventData] = "eventData"
-        [imagesAvailable] = "imagesAvailable"
-        ></app-media-popup>
-  `,
+  templateUrl: './launches-grid.component.html',
   styleUrl: './launches-grid.component.css'
 })
 export class LaunchesGridComponent {
