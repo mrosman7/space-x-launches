@@ -6,14 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-media-popup',
   imports: [NgIf, RouterLink],
   templateUrl: './media-popup.component.html',
-   styles: [
-    `.popup {
-      position: absolute;
-      background-color: white;
-      border: 1px solid #ccc;
-      padding: 20px;
-    }`
-  ]
+  styleUrl: './media-popup.component.css'
 })
 export class MediaPopupComponent {
   @Input() showPopup!: boolean;
