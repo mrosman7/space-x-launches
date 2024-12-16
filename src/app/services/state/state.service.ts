@@ -8,13 +8,18 @@ import { Launch } from '../../interfaces/launch-interface';
 })
 export class StateService {
 
+  // Setting up initial AppState
   private initialState: AppState = {
     data: [],
     isLoading: false
   };
-
   private stateSubject = new BehaviorSubject(this.initialState);
   state$ = this.stateSubject.asObservable();
+
+  // setting up state of launch images to be used in Images Component 
+  private imagesState: { [key: number]: string } = {};
+  private imageStateSubject = new BehaviorSubject(this.imagesState);
+  imagesState$ = this.imageStateSubject.asObservable();
 
   constructor() { }
 
@@ -23,6 +28,11 @@ export class StateService {
   updateState(newState: Partial<typeof this.initialState>) {
     const currentState = this.stateSubject.value;
     this.stateSubject.next({ ...currentState, ...newState });  // spread operator to combine currentState and newState
+  }
+
+  updateImagesState(newImagesState: Partial<typeof this.initialState>) {
+    const currentImageState = this.imageStateSubject.value;
+    this.imageStateSubject.next({...currentImageState, ...newImagesState});
   }
 
   // method to search for a specific flight launch in Launches[] for popup component 

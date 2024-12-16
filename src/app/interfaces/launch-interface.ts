@@ -10,5 +10,5 @@ export interface Launch {
     redditLaunch: string | null,
     redditMedia: string | null,
     redditRecovery: string | null,
-    missionImage: string | null
+    missionImages: string[] | []
 }

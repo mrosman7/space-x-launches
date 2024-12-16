@@ -10,6 +10,7 @@ import { Launch } from '../interfaces/launch-interface';
 import { MediaPopupComponent } from '../media-popup/media-popup.component';
 import { ApiService } from '../services/api/api.service';
 import { StateService } from '../services/state/state.service';
+import { ImagePageComponent } from "../image-page/image-page.component";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -29,6 +30,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
         <app-media-popup 
         [showPopup] = "showPopup"
         [eventData] = "eventData"
+        [imagesAvailable] = "imagesAvailable"
         ></app-media-popup>
   `,
   styleUrl: './launches-grid.component.css'
@@ -42,6 +44,7 @@ export class LaunchesGridComponent {
   paginationPageSizeSelector = [25, 50, 75, 100];
   showPopup: boolean = false;
   eventData!: Launch | void;
+  imagesAvailable: boolean = false;
 
   constructor(
     private stateService: StateService,
@@ -72,14 +75,23 @@ export class LaunchesGridComponent {
     this.showPopup = !this.showPopup;
   }
 
-  onCellClicked(event: any) {
-    this.toggleShowPopup()
-    this.eventData = this.stateService.getLaunch(event.data.flight_number);
-    const popup = document.createElement('div');
-    popup.innerHTML = `<app-cell-popup [data]="data"></app-cell-popup>`;
-    const popupComponent = new MediaPopupComponent();
-
-    document.body.appendChild(popup);
+  areImagesAvailable(event: any) {
+    if (event.data.missionImages < 1) {
+      this.imagesAvailable = false;
+    } else{
+      this.imagesAvailable = true;
+    }
   }
 
+  onCellClicked(event: any) {
+    this.toggleShowPopup()
+    this.areImagesAvailable(event);
+    //getting launch via state service and updating the state of the images
+    this.eventData = this.stateService.getLaunch(event.data.flight_number);
+    this.stateService.updateImagesState(event.data.missionImages);
+
+    const popup = document.createElement('div');
+    // const popupComponent = new MediaPopupComponent();
+    document.body.appendChild(popup);
+  }
 }

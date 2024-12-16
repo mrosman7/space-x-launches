@@ -35,8 +35,7 @@ export class ApiService {
           redditLaunch: item.links.reddit.launch,
           redditMedia: item.links.reddit.media,
           redditRecovery: item.links.reddit.recovery,
-          missionImage: item.links.patch.small
-
+          missionImages: item.links.flickr.original
         }));
 
         // update state post API call

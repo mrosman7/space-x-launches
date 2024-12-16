@@ -1,6 +1,7 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ImagePageComponent } from "../image-page/image-page.component";
 
 
 
@@ -19,7 +20,7 @@ import { RouterLink } from '@angular/router';
       <a href="{{eventData.wikipedia}}" *ngIf="eventData.wikipedia">Wikipedia Article</a>
       <p></p>
       <div>
-        <a routerLink="image-page"> Images </a>
+        <a *ngIf="imagesAvailable" routerLink="image-page"> Images </a>
       </div>
       <button (click)="closePopup()">Close</button>
       </div>
@@ -36,6 +37,7 @@ import { RouterLink } from '@angular/router';
 export class MediaPopupComponent {
   @Input() showPopup!: boolean;
   @Input() eventData: any = [];
+  @Input() imagesAvailable: boolean = true;
 
   closePopup () {
     this.showPopup = false;

@@ -13,8 +13,8 @@ export interface ApiResponse {
             media: string,
             recovery: string
         },
-        patch: {
-            small: string
+        flickr: {
+            original: string[] | []
         }
     }
 }
