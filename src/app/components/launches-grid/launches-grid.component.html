@@ -1,5 +1,5 @@
-<div>
-    <ag-grid-angular class="ag-theme-quartz" style="height: 500px;"
+<div #gridContent>
+    <ag-grid-angular class="ag-theme-quartz" style="height: 700px;"
     [rowData]="launches$ | async"
     [columnDefs]="colDefs"
     [pagination]="pagination"
@@ -11,5 +11,6 @@
     [showPopup] = "showPopup"
     [eventData] = "eventData"
     [imagesAvailable] = "imagesAvailable"
+    (close)="closePopup()"
     />
 </div>
