@@ -1,0 +1,18 @@
+.header-container {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(169, 223, 245);
+    color: white;
+  }
+.header-text {
+    margin-left: 10px;
+}
+
+.nav-style {
+    margin-right: 10px;
+    align-self: center;
+}

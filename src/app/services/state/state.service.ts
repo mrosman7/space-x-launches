@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AppState } from '../../interfaces/app-state-interface';
-import { Launch } from '../../interfaces/launch-interface';
 
 @Injectable({
   providedIn: 'root'

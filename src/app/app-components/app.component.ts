@@ -1,23 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "../components/header/header.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent],
   styleUrl: './app.component.css',
   template: `
   <main>
-    <header>
-        <p>Nav bar placeholder</p>
-    </header>
+    <app-header></app-header>
     <div>
       <router-outlet></router-outlet>
     </div>
-    <footer>
-      <p>created by Mariah Rosman</p>
-      <a href="https://www.linkedin.com/in/mariahrosman/">LinkedIn | </a>
-      <a href="https://bsky.app/profile/mariahsdevdiary.bsky.social"> BlueSky</a>
-    </footer>
 </main>
 `
 })
