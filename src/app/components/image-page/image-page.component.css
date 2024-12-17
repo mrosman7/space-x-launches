@@ -1,0 +1,13 @@
+.image-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.image {
+    width: auto;
+    height: 400px;
+    border-radius: 10px;
+}

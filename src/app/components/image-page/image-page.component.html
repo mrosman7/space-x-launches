@@ -1,5 +1,9 @@
-<div *ngIf="images$ | async as images">
+<!-- @ToDo: add alt text for these images. There is not alt text included
+so I would need to figure out a way to add text programatically
+that makes sense for each photo -->
+
+<div class="image-container" *ngIf="images$ | async as images">
     <div *ngFor="let image of objectValues(images)">
-      <img [src]="image" />
+      <img class="image" [src]="image" />
     </div>
 </div>

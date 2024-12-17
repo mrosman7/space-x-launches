@@ -30,7 +30,7 @@ export class StateService {
     this.stateSubject.next({ ...currentState, ...newState });  // spread operator to combine currentState and newState
   }
 
-  updateImagesState(newImagesState: Partial<typeof this.initialState>) {
+  updateImagesState(newImagesState: string[]) {
     const currentImageState = this.imageStateSubject.value;
     this.imageStateSubject.next({...currentImageState, ...newImagesState});
   }

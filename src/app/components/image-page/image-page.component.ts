@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StateService } from '../../services/state/state.service';
 
-// TODO: when image page is refreshed we see a blank page. This is something we would need to update before going to prod
+/* 
+@TODO: when image page is refreshed we see a blank page rather than the same image-page we were just on. 
+This is something we would need to update before going to prod (introduce caches)
+*/
 
 @Component({
   selector: 'app-image-page',
@@ -13,7 +16,6 @@ import { StateService } from '../../services/state/state.service';
 })
 export class ImagePageComponent {
   images$!: Observable<{ [key: string]: string; }>;
-  hasImages: boolean = false;
 
   constructor(private stateService: StateService) {}
 
@@ -21,9 +23,11 @@ export class ImagePageComponent {
     this.images$ = this.stateService.imagesState$;
   }
 
-  objectValues(obj: { [key: string]: string }): string[] {
+  /* We need to cast ths images to a list because the response from the API
+  is an Object. For example {0: "imageUR"}
+  */
+  objectValues(obj: { [key: number]: string }): string[] {
     return Object.values(obj);
   }
-
-
 }
+
