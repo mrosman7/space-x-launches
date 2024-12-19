@@ -9,32 +9,29 @@
     justify-content: center;
     align-items: center;
   }
-  .modal-container {
+.modal-container {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.modal-body {
+    list-style-type: none;
+    margin-top: 0px;
   }
-  .modal-header h3 {
-    margin: 0;
+.modal-row{
+    padding: 5px;
   }
-  .modal-body {
-    margin-top: 10px;
-  }
-  button {
+button {
     background-color: #007bff;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
   }
-  button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #03478f;
   }
-  
