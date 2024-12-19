@@ -11,4 +11,4 @@ export interface Launch {
     redditMedia: string | null,
     redditRecovery: string | null,
     missionImages: string[] | []
-}
+};

@@ -15,6 +15,6 @@ export interface ApiResponse {
         },
         flickr: {
             original: string[] | []
-        }
-    }
-}
+        };
+    };
+};

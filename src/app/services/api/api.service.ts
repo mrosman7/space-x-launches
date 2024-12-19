@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ApiResponse } from '../../interfaces/api-response';
 import { Launch } from '../../interfaces/launch-interface';
 import { StateService } from '../state/state.service';
@@ -41,11 +40,11 @@ export class ApiService {
         // update state post API call
         this.stateService.updateState({ data: launches, isLoading: false });
     },
-    // TO DO: fix error logging
+    // TODO: fix error logging
     // (error) => {
     //   console.log('Error fetching launches: ', error);
     //   this.stateService.updateState({isLoading: false});
     // }
   );
-}
-}
+};
+};

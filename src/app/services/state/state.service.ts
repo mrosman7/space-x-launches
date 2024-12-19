@@ -20,7 +20,7 @@ export class StateService {
   private imageStateSubject = new BehaviorSubject(this.imagesState);
   imagesState$ = this.imageStateSubject.asObservable();
 
-  constructor() { }
+  constructor() { };
 
   // using Partial as a way to update all or some of the state vs using AppState which would
   // require passing the entire state Object every time we update
@@ -41,6 +41,6 @@ export class StateService {
       return launchesList.find((dict) => dict.flight_number === flight);
     } else {
       return console.log('Launches list is empty')
-    }
-  }
-}
+    };
+  };
+};
