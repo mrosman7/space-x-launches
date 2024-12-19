@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -10,7 +11,6 @@ import { Launch } from '../../interfaces/launch-interface';
 import { ApiService } from '../../services/api/api.service';
 import { StateService } from '../../services/state/state.service';
 import { MediaPopupComponent } from '../media-popup/media-popup.component';
-import { HttpClientModule } from '@angular/common/http';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -24,8 +24,6 @@ export class LaunchesGridComponent {
   //Observables created from AppState to make it easier to reference launches list or isLoading on their own
   launches$!: Observable<Launch[]>;
   isLoading$!: Observable<boolean>;
-  
-  rowData: Launch[] = [];
 
   // pagination values for grid
   pagination = true;
@@ -35,6 +33,16 @@ export class LaunchesGridComponent {
   showPopup: boolean = false;
   eventData!: Launch | void;
   imagesAvailable: boolean = false;
+
+  // Row Data to be filled by API JSON response
+  // Column Definitions: Defines the columns to be displayed.
+  rowData: Launch[] = [];
+  colDefs: ColDef[] = [
+    { headerName: "Rocket Name", field: "rocketName", filter: true },
+    { headerName: "Flight Number", field: "flight_number", filter: true },
+    { headerName: "Launch Year", field: "launchYear", filter: true },
+    { field: "details", filter: true, autoHeight: true, wrapText: true, width: 750 }
+  ];
 
   constructor(
     private stateService: StateService,
@@ -51,14 +59,6 @@ export class LaunchesGridComponent {
       map(state => state.isLoading)
     );
   }
-
-  // Column Definitions: Defines the columns to be displayed.
-  colDefs: ColDef[] = [
-    { headerName: "Rocket Name", field: "rocketName", filter: true },
-    { headerName: "Flight Number", field: "flight_number", filter: true },
-    { headerName: "Launch Year", field: "launchYear", filter: true },
-    { field: "details", filter: true, autoHeight: true, wrapText: true, width: 750 },
-  ];
 
   openPopup() {
     this.showPopup = true;

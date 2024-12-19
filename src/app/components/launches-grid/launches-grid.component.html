@@ -1,5 +1,8 @@
-<div #gridContent>
-    <ag-grid-angular style="height: 700px;"
+<div>
+    <div class="spinner">
+        <mat-spinner *ngIf="isLoading$ | async; gridContent"></mat-spinner>
+    </div>
+    <ag-grid-angular #gridContent visibility="hidden" class="grid"
     [rowData]="launches$ | async"
     [columnDefs]="colDefs"
     [pagination]="pagination"
@@ -7,7 +10,7 @@
     [paginationPageSizeSelector]="paginationPageSizeSelector"
     (cellClicked)="onCellClicked($event)"
     />
-    <app-media-popup 
+    <app-media-popup
     [showPopup] = "showPopup"
     [eventData] = "eventData"
     [imagesAvailable] = "imagesAvailable"

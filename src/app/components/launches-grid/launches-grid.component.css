@@ -1,0 +1,13 @@
+.grid {
+    position: fixed;
+    top: 100px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+}
+.spinner {
+    display: flex;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+  }
