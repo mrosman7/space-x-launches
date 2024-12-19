@@ -4,7 +4,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AgGridAngular } from 'ag-grid-angular';
 import type { ColDef } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
-import 'ag-grid-community/styles/ag-theme-quartz.css';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Launch } from '../../interfaces/launch-interface';
@@ -18,7 +17,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   selector: 'app-launches-grid',
   imports: [AgGridAngular, MediaPopupComponent, CommonModule, MatProgressSpinnerModule],
   templateUrl: './launches-grid.component.html',
-  styleUrl: './launches-grid.component.css'
+  styleUrls: ['./launches-grid.component.css']
 })
 export class LaunchesGridComponent {
   //Observables created from AppState to make it easier to reference launches list or isLoading on their own

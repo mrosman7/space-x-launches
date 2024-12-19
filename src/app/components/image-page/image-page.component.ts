@@ -12,7 +12,7 @@ This is something we would need to update before going to prod (introduce caches
   selector: 'app-image-page',
   imports: [NgFor, NgIf, CommonModule],
   templateUrl: './image-page.component.html',
-  styleUrl: './image-page.component.css'
+  styleUrls: ['./image-page.component.css']
 })
 export class ImagePageComponent {
   images$!: Observable<{ [key: string]: string; }>;
