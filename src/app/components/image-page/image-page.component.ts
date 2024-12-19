@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { StateService } from '../../services/state/state.service';
 
 /* 
-@TODO: when image page is refreshed we see a blank page rather than the same image-page we were just on. 
+TODO: when image page is refreshed we see a blank page rather than the same image-page we were just on. 
 This is something we would need to update before going to prod (introduce caches)
 */
 
