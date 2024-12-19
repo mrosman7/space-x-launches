@@ -10,12 +10,13 @@ import { Launch } from '../../interfaces/launch-interface';
 import { ApiService } from '../../services/api/api.service';
 import { StateService } from '../../services/state/state.service';
 import { MediaPopupComponent } from '../media-popup/media-popup.component';
+import { HttpClientModule } from '@angular/common/http';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-launches-grid',
-  imports: [AgGridAngular, MediaPopupComponent, CommonModule, MatProgressSpinnerModule],
+  imports: [AgGridAngular, MediaPopupComponent, CommonModule, MatProgressSpinnerModule, HttpClientModule],
   templateUrl: './launches-grid.component.html',
   styleUrls: ['./launches-grid.component.css']
 })
