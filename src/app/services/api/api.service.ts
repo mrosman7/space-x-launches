@@ -10,9 +10,9 @@ import { StateService } from '../state/state.service';
 })
 
 export class ApiService {
-  stateService: StateService = new StateService;
 
   constructor (
+    private stateService: StateService,
     private http: HttpClient
   ) { }
 

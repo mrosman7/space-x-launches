@@ -1,11 +1,11 @@
-import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 
-import { ApiService } from './api.service';
-import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
-import { StateService } from '../state/state.service';
-import { Launch } from '../../interfaces/launch-interface';
+import { HttpClientModule } from '@angular/common/http';
 import { ApiResponse } from '../../interfaces/api-response';
+import { Launch } from '../../interfaces/launch-interface';
+import { StateService } from '../state/state.service';
+import { ApiService } from './api.service';
 
 describe('ApiService', () => {
   let service: ApiService;
