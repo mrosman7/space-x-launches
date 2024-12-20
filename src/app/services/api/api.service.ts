@@ -10,13 +10,14 @@ import { StateService } from '../state/state.service';
 })
 
 export class ApiService {
+  stateService: StateService = new StateService;
 
   constructor (
-    private stateService: StateService,
     private http: HttpClient
   ) { }
 
   // TODO: error is logged to console for now. In the future make sure this error is rendered for users
+  // handleError function from Angular documentation: https://v17.angular.io/guide/http-handle-request-errors
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
