@@ -20,4 +20,8 @@ describe('MediaPopupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close popup when onClick event receieved', () => {
+    // TODO: write test
+  });
 });
