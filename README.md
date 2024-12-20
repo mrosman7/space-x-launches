@@ -50,7 +50,7 @@ To view test code coverage run the following command:
 ng test --no-watch --code-coverage
 ```
 
-## Running end-to-end tests
+## Running end-to-end tests (NOT YET IMPLEMENTED)
 
 For end-to-end (e2e) testing, run:
 
