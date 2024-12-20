@@ -13,4 +13,16 @@ describe('StateService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('update the state of the app when updateState is called', () => {
+    // TODO: write test
+  });
+
+  it('update the state of Images when updateImagesState is called', () => {
+    // TODO: write test
+  });
+
+  it('should get a single launch when getLaunch is called with flight number', () => {
+    // TODO: write test
+  });
 });
