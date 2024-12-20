@@ -44,6 +44,12 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
+To view test code coverage run the following command:
+
+```bash
+ng test --no-watch --code-coverage
+```
+
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
