@@ -22,11 +22,26 @@ describe('LaunchesGridComponent', () => {
   });
 
   it('should open popup when cell clicked', () => {
-    // TODO: write test
+    // setup
+    spyOn(component, 'openPopup');
+
+    // act
+    component.openPopup();
+
+    // assert
+    expect(component.openPopup).toHaveBeenCalled();
+
   });
 
-  it('should close popup when close button is clicked', () => {
-    // TODO: write test
+  it('should call closePopup when modal is closed', () => {
+    // setup
+    spyOn(component, 'closePopup');
+
+    // act
+    component.closePopup();
+
+    // assert
+    expect(component.closePopup).toHaveBeenCalled();
   });
 
   it('should update the state of the cell that was clicked', () => {
@@ -38,10 +53,31 @@ describe('LaunchesGridComponent', () => {
   });
 
   it('should return false if the list of images is less than 1', () => {
-    // TODO: write test
+    // setup 
+    const mockEvent = {data: {
+      missionImages: []
+    }
+  }
+
+    // act
+    component.areImagesAvailable(mockEvent);
+
+    // assert
+    expect(component.imagesAvailable).toBeFalse();
   });
 
   it('should return true if the list of images is greater than 1', () => {
-    // TODO: write test
+        // setup 
+        const mockData = {data: {
+          missionImages: ["sampleUrl", "sampleUrl2"]
+        }
+      }
+    
+        // act
+        component.areImagesAvailable(mockData);
+        fixture.detectChanges();
+    
+        // assert
+        expect(component.imagesAvailable).toBeTrue();
   });
 });
