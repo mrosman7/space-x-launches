@@ -20,4 +20,8 @@ describe('ImagePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return a list of strings when given an Object when objectValues is called', () => {
+    // TODO: write test
+  });
 });
